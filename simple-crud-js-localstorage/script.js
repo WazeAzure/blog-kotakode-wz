@@ -65,12 +65,8 @@ $('#toggle-dark').delay(1000).click(function(){
 
 function checking(){
 	if(localStorage.getItem('dark-mode')){
-		alert('succeed')
-		var style = document.createElement('style')
-		style.innerHTML = '*{color-scheme: dark;}'
-
-		var ref = document.querySelector('script')
-
-		ref.parentNode.insertBefore(style, ref)
+		$('html').css('filter','invert(1) hue-rotate(180deg)')
+	}else {
+		$('html').css('filter', '')
 	}
 }
