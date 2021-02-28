@@ -19,8 +19,9 @@ function addNote(){
 	event.preventDefault()
 	let catatan = document.getElementById('catatan').value
 	document.getElementById('catatan').value = ""
-	temp.push({val:catatan})
-
+	if(catatan != ""){
+		temp.push({val:catatan})
+	}
 	saveToLocal(temp)
 
 	show(temp)
