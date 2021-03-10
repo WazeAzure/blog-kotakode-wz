@@ -77,6 +77,6 @@ function checking(){
 
 //dragable animation
 const dragArea = document.getElementById('notes')
-new Sortable(dragArea, {
-    animation: 300
+var sort = Sortable.create(dragArea, {
+    animation: 350
 })
