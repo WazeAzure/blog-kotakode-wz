@@ -37,6 +37,7 @@ function show(notes){
 	let list = document.getElementById("notes")
 	for(let i=notes.length-1;i>=0;i--){
 		var test = document.createElement('li')
+        test.setAttribute('draggable','true')
 		test.setAttribute('class','list-group-item d-flex justify-content-between align-items-center')
 		test.innerHTML = `${notes[i].val} <button class="btn btn-outline-danger btn-sm" onclick="del(${i})">delete</button>`
 
@@ -70,3 +71,9 @@ function checking(){
 		$('html').css('filter', '')
 	}
 }
+
+//dragable animation
+const dragArea = document.getElementById('notes')
+new Sortable(dragArea, {
+    animation: 300
+})
