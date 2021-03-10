@@ -42,7 +42,7 @@ function show(notes){
         test.setAttribute('draggable','true')
 		test.setAttribute('class','list-group-item d-flex justify-content-between align-items-center')
         test.setAttribute('id','listing')
-		test.innerHTML = `${notes[i].val} <button class="btn btn-outline-danger btn-sm" style="z-index:10" onclick="del(${i})">delete</button>`
+		test.innerHTML = `<span id="ini-note">${notes[i].val}</span> <button class="btn btn-outline-danger btn-sm" style="z-index:10" onclick="del(${i})">delete</button>`
 
 		list.appendChild(test)
 	}
@@ -78,5 +78,6 @@ function checking(){
 //dragable animation
 const dragArea = document.getElementById('notes')
 var sort = Sortable.create(dragArea, {
-    animation: 350
+    animation: 350,
+    handle: "#ini-note" 
 })
