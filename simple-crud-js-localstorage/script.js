@@ -18,9 +18,11 @@ window.onload = function(){
 function addNote(){
 	event.preventDefault()
 	let catatan = document.getElementById('catatan').value
+    let deadline = document.getElementById('tanggal').value
 	document.getElementById('catatan').value = ""
+    document.getElementById('tanggal').value = ""
 	if(catatan != ""){
-		temp.push({val:catatan})
+		temp.push({val:catatan+"//"+deadline})
 	}
 	saveToLocal(temp)
 
@@ -39,6 +41,7 @@ function show(notes){
 		var test = document.createElement('li')
         test.setAttribute('draggable','true')
 		test.setAttribute('class','list-group-item d-flex justify-content-between align-items-center')
+        test.setAttribute('id','listing')
 		test.innerHTML = `${notes[i].val} <button class="btn btn-outline-danger btn-sm" onclick="del(${i})">delete</button>`
 
 		list.appendChild(test)
