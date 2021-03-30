@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Aplikasi Note</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="style.css">
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"	>
-		<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-	</head>
-	<body class="container-sm pt-3">
-		<h1 class="container text-center .display-1 mb-1">Welcome to Catatan Simpel</h1>
-		<h2 class="container text-center mb-1"><small>Created with Vanilla JS, JQuery, Bootstrap 4, and LocalStorage</small></h2>
-		<div class="container-fluid mb-3" id="toggle-dark">
+<head>
+	<title>Aplikasi Note</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"	>
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+</head>
+<body>
+    <div class="container-sm pt-3">
+        <h1 class="text-center .display-1 mb-1">Welcome to Catatan Simpel <br><small>Dengan Javascript dan LocalStorage</small> </h1>
+        
+        <div class="container-fluid mb-3" id="toggle-dark">
 			<input type="checkbox" data-toggle="toggle">
 		</div>
-		<form class="container-md form-inline input-group ">
-			<input type="text" id="catatan" class="form-control mb-2 mr-2 " placeholder="catatanku">
-            <input type="date" id="tanggal" class="form-control mb-2 mr-2" placeholder="DD-MM-YY">
-			<input type="submit" onclick="addNote()" class="btn btn-primary mb-2">
-		</form>
-		
-		<div class="mh-50 d-inline-block container overflow-scroll">
-			<ul id="notes" class="list-group list-group-flush">
-			</ul>
-		</div>
+        
+        <form class="container-md form-inlin input-group">
+            <input type="text" id="inp_catatan" class="form-control mb-2 mr-2" placeholder="2 rak telor ayam">
+            <input type="submit" onclick="tambahCatatan()" class="btn btn-primary bm-2">
+        </form>
 
-		<script src="script.js"></script>
-	</body>
+        <div class="mh-50 d-inline-block container-fluid">
+            <ul id="daftar-catatan">
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
 

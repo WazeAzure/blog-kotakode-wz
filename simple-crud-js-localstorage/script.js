@@ -1,62 +1,55 @@
-
-let temp = []
+let listCatatan = []
 
 window.onload = function(){
 	if(localStorage.getItem("catatanku")){
-		temp = JSON.parse(localStorage.getItem("catatanku"))
+		listCatatan = JSON.parse(localStorage.getItem("catatanku"))
 	} else {
-		temp = []
+		listCatatan = []
 	}
-	if(localStorage.getItem('dark-mode')){
-		$('#toggle-dark').children().removeClass().addClass("toggle btn btn-primary")
-	} else {
-		$('#toggle-dark').children().removeClass().addClass("toggle btn btn-default off")
-	}
-	show(temp)
+	showList()
 }
 
-function addNote(){
+
+function showList(){
+    clear()
+	let kumpulan = document.getElementById('daftar-catatan')
+	for(let i = listCatatan.length-1; i >= 0; i--){
+		var test = document.createElement('li')
+		test.setAttribute('class','list-group-item d-flex justify-content-between align-items-center')
+        test.setAttribute('id','listing')
+		test.innerHTML = `<span id="ini-note">${listCatatan[i].val}</span> <button class="btn btn-outline-danger btn-sm" style="z-index:10" onclick="del(${i})">delete</button>`
+		kumpulan.appendChild(test)
+	}
+
+}
+
+function tambahCatatan(){
 	event.preventDefault()
-	let catatan = document.getElementById('catatan').value
-    let deadline = document.getElementById('tanggal').value
-	document.getElementById('catatan').value = ""
-    document.getElementById('tanggal').value = ""
+	let catatan = document.getElementById('inp_catatan').value
+	document.getElementById('inp_catatan').value = ""
 	if(catatan != ""){
-		temp.push({val:catatan+"//"+deadline})
+		listCatatan.push({val:catatan})
 	}
-	saveToLocal(temp)
+	saveToLocal()
 
-	show(temp)
+	showList()
 }
 
-function saveToLocal(notes){
-	notes = JSON.stringify(notes)
+function saveToLocal(){
+	let notes = JSON.stringify(listCatatan)
 	localStorage.setItem("catatanku", notes)
 }
 
-function show(notes){
-	clear()
-	let list = document.getElementById("notes")
-	for(let i=notes.length-1;i>=0;i--){
-		var test = document.createElement('li')
-        test.setAttribute('draggable','true')
-		test.setAttribute('class','list-group-item d-flex justify-content-between align-items-center')
-        test.setAttribute('id','listing')
-		test.innerHTML = `<span id="ini-note">${notes[i].val}</span> <button class="btn btn-outline-danger btn-sm" style="z-index:10" onclick="del(${i})">delete</button>`
-
-		list.appendChild(test)
-	}
-}
-
 function clear(){
-	document.getElementById("notes").innerHTML = ""
+	document.getElementById("daftar-catatan").innerHTML = ""
 }
 
 function del(index){
-	temp.splice(index, 1)
-	saveToLocal(temp)
-	show(temp)
+	listCatatan.splice(index, 1)
+	saveToLocal()
+	showList()
 }
+
 
 $('#toggle-dark').delay(1000).click(function(){
 	if($('#toggle-dark').children().attr('class') != 'toggle btn btn-default off'){
@@ -75,9 +68,3 @@ function checking(){
 	}
 }
 
-//dragable animation
-const dragArea = document.getElementById('notes')
-var sort = Sortable.create(dragArea, {
-    animation: 350,
-    handle: "#ini-note" 
-})
